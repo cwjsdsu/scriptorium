@@ -1,5 +1,4 @@
-import runner
-import runner2
+import runCustomInput
 
 """
 In this example, I use runCustom to run bigstick for several
@@ -27,5 +26,5 @@ for N in range(2,4):
                    'Anumber': A }
     label = "isotope.%s.%s"%(Z,N)
 
-    #runner.runCustom(exec_name, input_template, pnames, pvalues, workdir, label)
-    runner2.runCustom(exec_name, input_template, parameters, workdir, label)
+    #runCustomInput.runCustom(exec_name, input_template, pnames, pvalues, workdir, label)
+    runCustomInput.runCustomInput(exec_name, input_template, parameters, workdir, label)

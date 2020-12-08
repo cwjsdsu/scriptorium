@@ -1,20 +1,23 @@
 import os
 import subprocess
 
-def runCustom(exec_name, input_template, param_dict, 
+def runCustomControl(exec_name, inputfile, control_template, param_dict, 
     workdir='', label='runCustom'):
 
     """
      Author: Oliver Gorton, 2020
 
      This is a function for running an executable program with a custom
-     input file by replacing keywords in a template used by the executed
-     code.
+     control file by replacing keywords in a template used by the executed
+     code. The control file is one which is used indirectly (not a by a 
+     command line pipe). For example, an interaction file for bigstick.
 
      exec_name: (string) containing the path to and name of the
          executable you want to run
-     input_template: (string) this is an input or control file used by the executable
-         and which will be edited by this function
+     inputfile: (string) this is an input file used by the executable
+     control_template: (string) the base-name of a file ending in '.control'. 
+         "<control_template>.template" is the template file which the function 
+         will edit and copy into <control_template>.
      param_dict: (dictionary) of keywords and the values to which those keywords
          will be changed. The keywords are strings which should appear in the 
          input_template file. 
@@ -31,14 +34,13 @@ def runCustom(exec_name, input_template, param_dict,
     findandreplace = "sed '"
     for keyword in param_dict.keys():
         findandreplace += "s/%s/%s/g;"%(keyword,param_dict[keyword])
-    findandreplace += "' %s > %s.input"%(input_template,label)
+    findandreplace += "' %s.template > %s"%(control_template, control_template)
     returned = subprocess.call(findandreplace, shell=True)
 
-    command = "%s < %s.input > %s.output"%(exec_name,label,label)
+    command = "%s < %s > %s.output"%(exec_name, inputfile, label)
     print(command)
     returned = subprocess.call(command,shell=True)
 
-    # Move back to calling directory
     os.chdir(path)
 
     return
