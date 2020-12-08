@@ -6,7 +6,7 @@ script to create that file from scratch for each run. But if your input file is
 large or complicated, there is a better option: to have a template file which
 you update for each run with only the data that needs to change. 
 
-This function does that. You tell is the executable name, the template file you
+This function does that. You provide the executable name, the template file you
 want to modify for each run, and a dictionary of parameters and the values you
 want to set them to. Optionally, you can run the code within a directory which
 is not your current working directory, and you can name the job. The function
