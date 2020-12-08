@@ -1,0 +1,11 @@
+n
+isotope.Znumber.Nnumber
+sd
+Znumber
+Nnumber
+2xJz
+usdb
+1. 18. Anumber 0.3
+end
+ex
+10
