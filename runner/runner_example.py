@@ -1,8 +1,11 @@
 import runner
 
-# In this example, I use runCustom to run bigstick for several
-# custom input files, where in each I change the number of 
-# neutrons, and create a consitent input file.
+"""
+In this example, I use runCustom to run bigstick for several
+custom input files, where in each I change the number of 
+neutrons, and create a consistent input file.
+
+"""
 
 exec_name = "bigstick.x"
 input_template = "input.Z.N"
