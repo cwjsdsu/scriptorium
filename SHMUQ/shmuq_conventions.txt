@@ -1,0 +1,93 @@
+SHMUQ naming conventions
+J.M.R. Fox 2021
+
+CSV files must have a single header line with column names
+
+For non-charge changing transitions:
+
+A =  mass number (int)
+Z = proton number (int)
+N = neutron number (int)
+
+Element = short name of element, e.g. Mg (str)
+Nucleus = A+Element, e.g. 24Mg (str)
+
+Energy (keV) = Excitation energy of initial state (float)
+Energy Unc (keV) = Experimental uncertainty on excitation energy of initial state (float)
+E_gamma (keV) = Energy of gamma transition from experiment (float)
+E_gamma Unc (keV) = Uncertainty on energy of gamma transition (float)
+
+I_gamma = Intensity of gamma transition (float)
+I_gamma Unc = Uncertainty on intensity (float)
+
+Mult = Multipole of gamma, possible with NNDC format decorator (e.g. E2, [E2], (M1)) (str)
+
+B_exp (W.u.) = Transition strength in Weisskopf units
+B_exp Unc (W.u.) = Uncertainty on transition strength in Weisskopf units
+B_exp (<X>) = Transition strength in X units
+B_exp Unc (<X>) = Uncertainty on transition strength in X units
+
+Ji = J of initial state (str, but sometimes entered as float or int, can be troublesome)
+Jf = J of final state
+ni = index of initial state (e.g. Ji,ni = 2,3 means the 3rd J=2 state) (int)
+nf = index of final state
+twoJi = 2 x Ji (int)
+twoJf = 2 x Jf (int)
+
+Thalf = experimental halflife, usually from NNDC in format like '26 FS 3', meaning 26*10^-15 +/- 3 seconds (str)
+Thalf Value = coefficient of Thalf (float)
+Thalf Units = units of Thalf (str)
+Thalf Unc = Experimental uncertainty on halflife
+Thalf (sec) = Thalf in seconds (float)
+Thalf Unc (sec) = experimental uncertainty on Thalf in seconds (float)
+
+Include = Whether to include in calculations or skip. Should probably be removed. (bool)
+
+-------------------------------------
+For charge changing transitions:
+
+A =  mass number
+
+Attributes of initial (parent) state:
+
+    Zi = proton number
+    Ni = neutron number
+    Element_i = short name of element, e.g. Mg (str)
+    Nucleus_i = A+Element, e.g. 24Mg (str)
+    Energy_i (keV) = Excitation energy (float)
+    Energy_i Unc (keV) = Experimental uncertainty on excitation energy (float)
+    Ji = J of initial state (str, but sometimes entered as float or int, can be troublesome)
+    ni = index of initial state (e.g. Ji,ni = 2,3 means the 3rd J=2 state) (int)
+    twoJi = 2 x Ji (int)
+
+Attributes of final (daughter) state:
+
+    Zf = proton number
+    Nf = neutron number
+    Element_f = short name of element, e.g. Mg (str)
+    Nucleus_f = A+Element, e.g. 24Mg (str)
+    Energy_f (keV) = Excitation energy (float)
+    Energy_f Unc (keV) = Experimental uncertainty on excitation energy (float)
+    Jf = J of final state
+    nf = index of final state
+    twoJf = 2 x Jf (int)
+
+decay = type of decay, e.g. b+, b-, or ec
+logft = log(ft) value for decay (float)
+logft Unc = Experimental uncertainty in log(ft) value for decay (float)
+I = percent intensity, i.e. out of 100 (float)
+I Unc = Experimental uncertainty in percent intensity, i.e. out of 100 (float)
+deltaJ = Jf - Ji (int)
+Tmirror = is Tzi = -Tzf ? (bool)
+
+B_exp = Transition strength, unitless (float)
+B_exp Unc = Experimental uncertainty in transition strength, unitless (float)
+
+B_exp (W.u.) = Transition strength in Weisskopf units
+B_exp Unc (W.u.) = Uncertainty on transition strength in Weisskopf units
+
+B_exp (<X>) = Transition strength in X units
+B_exp Unc (<X>) = Uncertainty on transition strength in X units
+
+Include = Whether to include in calculations or skip. Should probably be removed. (bool)
+
