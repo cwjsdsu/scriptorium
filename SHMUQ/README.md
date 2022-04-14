@@ -1,3 +1,5 @@
-SHMUQ = SHell Model Uncertainty Quantification
-developed by J. M. R. Fox 2019 - 2021 at San Diego State Univ.
+# SHMUQ
+
+SHell Model Uncertainty Quantification
+SHMUQ is a Python module for BIGSTICK and related utility codes to do sensitivity analysis of interaction matrix elements and uncertainty quantifiaction of transition calculations.
 
